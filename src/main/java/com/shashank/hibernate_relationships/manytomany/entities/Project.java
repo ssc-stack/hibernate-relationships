@@ -1,9 +1,8 @@
 package com.shashank.hibernate_relationships.manytomany.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 public class Project {
@@ -11,4 +10,6 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    @ManyToMany(mappedBy = "projects")
+    private Set<Programmer> programmers;
 }
