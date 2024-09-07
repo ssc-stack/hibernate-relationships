@@ -1,9 +1,7 @@
 package com.shashank.hibernate_relationships.onetomany.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.util.HashSet;
