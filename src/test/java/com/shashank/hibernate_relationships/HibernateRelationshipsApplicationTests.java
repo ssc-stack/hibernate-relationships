@@ -7,11 +7,15 @@ import com.shashank.hibernate_relationships.onetomany.entities.Customer;
 import com.shashank.hibernate_relationships.onetomany.entities.PhoneNumber;
 
 import com.shashank.hibernate_relationships.onetomany.repository.CustomerRepository;
+import com.shashank.hibernate_relationships.onetoone.entities.License;
+import com.shashank.hibernate_relationships.onetoone.entities.Person;
+import com.shashank.hibernate_relationships.onetoone.repositories.LicenseRepository;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,6 +26,8 @@ class HibernateRelationshipsApplicationTests {
 	private CustomerRepository customerRepository;
 	@Autowired
 	private ProgrammerRepository programmerRepository;
+	@Autowired
+	private LicenseRepository licenseRepository;
 
 	@Test
 	void testCreateCustomer() {
@@ -80,5 +86,20 @@ class HibernateRelationshipsApplicationTests {
 		for (Project project : projects) {
 			System.out.println(project.getName());
 		}
+	}
+
+	@Test
+	void testOneToOneCreateLicense() {
+		License license = new License();
+		license.setType("CAR");
+		license.setValidFrom(new Date());
+		license.setValidTo(new Date());
+
+		Person person = new Person();
+		person.setFirstName("Shashank");
+		person.setLastName("Singh");
+		person.setAge(25);
+		license.setPerson(person);
+		licenseRepository.save(license);
 	}
 }
