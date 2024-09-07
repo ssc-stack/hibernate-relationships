@@ -22,7 +22,7 @@ public class Customer {
         if(phoneNumbers == null) {
             phoneNumbers = new HashSet<>();
         }
-        //phoneNumber.setCustomer(this); // Ensure customer is set for every PhoneNumber
+        phoneNumber.setCustomer(this); // Ensure customer is set for every PhoneNumber
         phoneNumbers.add(phoneNumber);
     }
 

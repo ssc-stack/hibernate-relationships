@@ -1,9 +1,6 @@
 package com.shashank.hibernate_relationships.manytomany.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,5 +16,11 @@ public class Programmer {
     private String name;
     private int salary;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "programmers_projects",
+            joinColumns = @JoinColumn(name = "programmer_id"),
+            inverseJoinColumns = @JoinColumn(name = "project_id")
+    )
     private Set<Project> projects;
 }
