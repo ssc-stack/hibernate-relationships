@@ -11,7 +11,7 @@
 	<groupId>com.shashank</groupId>
 	<artifactId>hibernate-relationships</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>hiberante-relationships</name>
+	<name>hibernate-relationships</name>
 	<description>Types of relationships between entitites</description>
 	<url/>
 	<licenses>

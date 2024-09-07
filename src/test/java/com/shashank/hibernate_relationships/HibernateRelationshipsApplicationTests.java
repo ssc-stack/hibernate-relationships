@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.HashSet;
+import java.util.Set;
 
 @SpringBootTest
 class HibernateRelationshipsApplicationTests {
@@ -20,20 +21,16 @@ class HibernateRelationshipsApplicationTests {
 	void testCreateCustomer() {
 		Customer customer = new Customer();
 		customer.setName("Shashank");
-		HashSet<PhoneNumber> phoneNumbers = new HashSet<>();
 
 		PhoneNumber phoneNumber = new PhoneNumber();
 		phoneNumber.setNumber("1234567890");
 		phoneNumber.setType("cell");
-		phoneNumbers.add(phoneNumber);
 
 		PhoneNumber phoneNumber2 = new PhoneNumber();
 		phoneNumber2.setNumber("0987654321");
 		phoneNumber2.setType("home");
-		phoneNumbers.add(phoneNumber2);
-
-		customer.setPhoneNumbers(phoneNumbers);
-
+		customer.addPhoneNumber(phoneNumber);
+		customer.addPhoneNumber(phoneNumber2);
 		customerRepository.save(customer);
 
 	}
