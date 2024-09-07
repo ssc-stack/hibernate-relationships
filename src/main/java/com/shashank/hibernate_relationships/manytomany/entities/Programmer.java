@@ -16,7 +16,7 @@ public class Programmer {
     private String name;
     private int salary;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinTable(
             name = "programmers_projects",
             joinColumns = @JoinColumn(name = "programmer_id"),

@@ -1,5 +1,8 @@
 package com.shashank.hibernate_relationships;
 
+import com.shashank.hibernate_relationships.manytomany.entities.Programmer;
+import com.shashank.hibernate_relationships.manytomany.entities.Project;
+import com.shashank.hibernate_relationships.manytomany.repository.ProgrammerRepository;
 import com.shashank.hibernate_relationships.onetomany.entities.Customer;
 import com.shashank.hibernate_relationships.onetomany.entities.PhoneNumber;
 
@@ -17,6 +20,8 @@ class HibernateRelationshipsApplicationTests {
 
 	@Autowired
 	private CustomerRepository customerRepository;
+	@Autowired
+	private ProgrammerRepository programmerRepository;
 
 	@Test
 	void testCreateCustomer() {
@@ -47,4 +52,33 @@ class HibernateRelationshipsApplicationTests {
 		}
 	}
 
+	@Test
+	void testManyToManyCreateProgrammer() {
+		Programmer programmer = new Programmer();
+		programmer.setName("Shashank");
+
+		Project project = new Project();
+		project.setName("Hibernate Project");
+
+		Project project2 = new Project();
+		project2.setName("Spring Project");
+
+		Set<Project> projects = new HashSet<>();
+		projects.add(project);
+		projects.add(project2);
+
+		programmer.setProjects(projects);
+		programmerRepository.save(programmer);
+		//programmerRepository.save(programmer2);
+	}
+
+	@Test
+	void testManyToManyFindProgrammer() {
+		Programmer programmer = programmerRepository.findById(1).get();
+		System.out.println(programmer.getName());
+		Set<Project> projects = programmer.getProjects();
+		for (Project project : projects) {
+			System.out.println(project.getName());
+		}
+	}
 }

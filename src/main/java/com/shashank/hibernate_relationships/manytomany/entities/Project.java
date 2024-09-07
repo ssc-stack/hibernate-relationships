@@ -1,9 +1,13 @@
 package com.shashank.hibernate_relationships.manytomany.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Set;
 
+@Setter
+@Getter
 @Entity
 public class Project {
     @Id
