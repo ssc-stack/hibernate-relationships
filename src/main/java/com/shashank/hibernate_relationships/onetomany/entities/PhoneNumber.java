@@ -1,9 +1,6 @@
 package com.shashank.hibernate_relationships.onetomany.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -14,4 +11,7 @@ public class PhoneNumber {
     private int id;
     private String number;
     private String type;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 }
