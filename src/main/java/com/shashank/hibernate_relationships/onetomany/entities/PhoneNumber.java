@@ -5,9 +5,10 @@ import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "phone_number")
 public class PhoneNumber {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String number;
     private String type;

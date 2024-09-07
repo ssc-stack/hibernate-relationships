@@ -1,4 +1,4 @@
-package com.shashank.hibernate_relationships.onetomany.entities.repository;
+package com.shashank.hibernate_relationships.onetomany.repository;
 
 import com.shashank.hibernate_relationships.onetomany.entities.Customer;
 import org.springframework.data.repository.CrudRepository;
